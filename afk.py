@@ -5,7 +5,7 @@ from pynput.mouse import Button, Controller
 
 mouse = Controller()
 
-print("This is an afk setup for minecraft created by rayane866\n \nF6: start/stop killing(left click/1sec)\nF7: start/stop fishing/placing blocks (right click)\nF8: start/stop breaking blocks (left click)\nF12: exit")
+print("This is an afk setup for minecraft created by rayane866\n \nF6: start/stop killing\nF7: start/stop fishing/placing blocks\nF8: start/stop breaking blocks\nF12: exit")
       
 killing = False
 fishing = False
