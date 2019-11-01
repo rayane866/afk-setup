@@ -2,11 +2,15 @@
 import time
 from pynput.keyboard import *
 from pynput.mouse import Button, Controller
+import logging 
 
 mouse = Controller()
+logging.basicConfig(filename='test.log', level=logging.DEBUG,
+                    format='%(asctime)s:%(levelname)s:%(message)s')
 
 print("This is an afk setup for minecraft created by rayane866\n \nF6: start/stop killing\nF7: start/stop fishing/placing blocks\nF8: start/stop breaking blocks\nF12: exit")
-      
+logging.info("running...")     
+
 killing = False
 fishing = False
 breqking = False
@@ -35,32 +39,39 @@ def on_press(key):              #detect the keys
     if key == st_killing:       #for killing
         if killing:
             killing = False
+            logging.info("stoped killing")
             print("[stoped killing]")
         else:
             breqking = False
             killing = True
-            print("[killing]")
+            logging.info("killing...")
+            print("[killing...]")
 
     elif key == st_fishing:     #for fishing
         if fishing:
             fishing = False
             mouse.release(Button.right)
+            logging.info("stoped fishing/placing blocks")
             print("[stoped fishing/placing blocks]")
         else:
             fishing = True
-            print("[fishing/placing blocks]")
+            logging.info("fishing/placing blocks...")
+            print("[fishing/placing blocks...]")
 
     elif key == st_breqking:    #for breaking
         if breqking:
             breqking = False
             mouse.release(Button.left)
+            logging.info("stoped beaking blocks")
             print("[stoped beaking blocks]")
         else:
             killing = False
             breqking = True
-            print("[breaking blocks]")
+            logging.info("breaking blocks...")
+            print("[breaking blocks...]")
 
     elif key == exit:           #for exiting
+        logging.info("exiting...\n")
         print("[exiting...]")
         running = False
         mouse.release(Button.right)
@@ -77,6 +88,5 @@ def main():                     #the main functoin
             fish()
         elif breqking:          #for breaking
             breqk()
-
-if __name__ == '__main__':      #starting program
-    main()
+    
+main()      #starting program
